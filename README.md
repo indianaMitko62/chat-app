@@ -7,6 +7,7 @@ Real-time chat app for multiple users.
 - NodeJS
 - npm
 - Docker
+- docker-compose
 
 # Start
 ```
