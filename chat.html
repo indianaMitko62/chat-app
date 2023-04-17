@@ -79,7 +79,6 @@
   line-height: 1.5;
 }
 
-
 </style>
 </head>
 <body>
@@ -124,7 +123,7 @@
 
     function addMessages(message){
         const date = new Date(message.sent_at).toLocaleString(); // convert to a human-readable date
-        $("#messages").prepend(`<h4> ${message.name} </h4> <p> ${message.message} </p> <p class="text-muted">${date}</p>`);
+        $("#messages").prepend(`<div class="message"> <h4> <b>${message.name}</b> </h4> <p> ${message.message} </p> <p class="text-muted">${date}</p> </div> <hr>`);
     }
 
     function getMessages(){
