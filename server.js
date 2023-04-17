@@ -81,6 +81,7 @@ app.post("/messages", (req, res) =>
   {
     if(err) return console.log('error',err);
     if(typeof data[0] === 'undefined') return console.log('no such user');
+    if("" == req.body.message) return console.log('no message');
     idaa = data[0].id;
     console.log("1 - " + data[0].id);
     console.log("2 - " + idaa);
