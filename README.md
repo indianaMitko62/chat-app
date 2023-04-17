@@ -4,6 +4,7 @@ Real-time chat app for multiple users.
 # Development
 The chat is made with express and node js for the backend and frontend. MySQL is used for the database. Docker-compose is used for scalability and high availability. 
 ![Alt text](https://cdn.discordapp.com/attachments/679727210843734047/1097605492509003827/image.png)
+![Alt text](https://cdn.discordapp.com/attachments/679727210843734047/1097606817305071705/image.png)
 
 The chat consists of two pages:
 - login page
