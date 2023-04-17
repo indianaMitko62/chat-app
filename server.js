@@ -1,6 +1,8 @@
 var mysql = require('mysql');
+var cors = require('cors');
 var express = require('express');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+const { dirname } = require('path');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -8,17 +10,22 @@ var io = require('socket.io')(http);
 app.use(express.static(__dirname));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))
+app.use(cors());
 
 const db = mysql.createConnection({
   host:"localhost",
   port: "3306",
   user : "root",
-  password : "mitko123",
+  password : "password",
   database : "chat"
 })
 
 app.get("/", (req, res)=> {
   res.json("hello this is the backend")
+})
+
+app.get("/chat", (req, res)=> {
+  return res.sendFile(__dirname + "/chat.html");
 })
 
 app.get('/messages', (req, res) => {
@@ -49,6 +56,7 @@ app.post("/messages", (req, res) =>
 {
   var q = "select Users.id from Users where Users.name = (?)";
   let idaa;
+  console.log("NAME: " + req.body.name);
   db.query(q, [req.body.name], (err, data) => 
   {
     if(err) return console.log('error',err);
