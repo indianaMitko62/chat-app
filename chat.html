@@ -52,14 +52,14 @@
   font-size: 14px;
 }
 
-#send {
+.btn-success {
   background-color: #28a745;
   border-color: #28a745;
   border-radius: 30px;
   padding: 12px 40px;
 }
 
-#send:hover {
+.btn-success:hover {
   background-color: #218838;
   border-color: #1e7e34;
 }
@@ -93,6 +93,7 @@
         <textarea id = "message" class="form-control" placeholder="Your Message Here"></textarea>
         <br>
         <button id="send" class="btn btn-success">Send</button>
+        <button id="logout" class = "btn btn-success">Log out</button>
     </div>
     <div id="messages">
 
@@ -110,6 +111,10 @@
     $(() => {
         $("#send").click(()=>{
             sendMessage({name: $("#name").val(), message: $("#message").val()});
+
+        })
+        $("#logout").click(()=>{
+          window.location.href = '/';
         })
 
         getMessages()
@@ -131,11 +136,6 @@
     function sendMessage(message){
       $.post('http://localhost:3000/messages', message)
     }
-
-    
-
-
-    
 </script>
 </body>
 </html>
