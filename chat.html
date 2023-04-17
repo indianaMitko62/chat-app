@@ -118,7 +118,8 @@
     socket.on('message', addMessages)
 
     function addMessages(message){
-        $("#messages").append(`<h4> ${message.name} </h4> <p> ${message.message} </p>`)
+        const date = new Date(message.sent_at).toLocaleString(); // convert to a human-readable date
+        $("#messages").prepend(`<h4> ${message.name} </h4> <p> ${message.message} </p> <p class="text-muted">${date}</p>`);
     }
 
     function getMessages(){
@@ -130,6 +131,9 @@
     function sendMessage(message){
       $.post('http://localhost:3000/messages', message)
     }
+
+    
+
 
     
 </script>
