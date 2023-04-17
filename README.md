@@ -10,6 +10,5 @@ Real-time chat app for multiple users.
 
 # Start
 ```
-npm install
-npm start
+sudo docker-compose up --build --scale chat-app=5
 ```
