@@ -30,7 +30,6 @@ app.get("/chat", (req, res)=> {
 
 app.get('/messages', (req, res) => {
   const q = "select message, sent_at, Users.name as name from Message left join Users on Users.id = Message.sender;"
-  //const q = '';
   db.query(q, (err, data) => 
   {
     if(err) return console.log('error',err);
@@ -41,8 +40,7 @@ app.get('/messages', (req, res) => {
 app.get('/messages/:user', (req, res) => 
 {
   const userId = req.params.user;
-  const newLocal = "select message, Users.name as name from Message left join Users on Users.id = Message.sender;"; //////////////
-  //const newLocal = "";
+  const newLocal = "select message, Users.name as name from Message left join Users on Users.id = Message.sender;";
   const q = newLocal
 
   db.query(q, [userId], (err, data) => 
@@ -86,7 +84,7 @@ app.post("/messages", (req, res) =>
     idaa = data[0].id;
     console.log("1 - " + data[0].id);
     console.log("2 - " + idaa);
-    let query = "insert into Message (`message`, `sender`, `sent_at`) values (?, ?, NOW())"; // add sent_at column
+    let query = "insert into Message (`message`, `sender`, `sent_at`) values (?, ?, NOW())"; 
     const values = [
       req.body.message,
       idaa
@@ -99,7 +97,7 @@ app.post("/messages", (req, res) =>
       }
       else
       {
-        io.emit('message', {...req.body, sent_at: new Date()}); // send the date to the frontend
+        io.emit('message', {...req.body, sent_at: new Date()}); 
         return console.log("Message added successfully");
       }
     })
